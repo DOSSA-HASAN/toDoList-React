@@ -5,8 +5,8 @@ function ToDoList(){
     const [tasks, setTask] = useState([])
     const [newTask, setNewTask] = useState("")
 
-    function handleInputChange(event){
-        setTask(event.target.value)
+    function handleInputChange(event) {
+        setNewTask(event.target.value);
     }
 
     function handleAddTask(event){
@@ -47,12 +47,12 @@ function ToDoList(){
                 <h1>To Do List</h1>
 
                 <div>
-                    <input type="text" placeholder="Enter a task..." value={newTask} onChange={handleInputChange}/>
+                    <input type="text" placeholder="Enter a task..." value={newTask} onChange={(event) => handleInputChange(event)}/>
                     <button className="add-button" onClick={(index) => handleAddTask(index)}>Add task</button>
                 </div>
 
                 <ol>
-                    {tasks.map((task, index) => <li key={index}><span className="text">{task}</span>
+                    {tasks && tasks.map((task, index) => <li key={index}><span className="text">{task}</span>
                     <button className="delete-button" onClick={() => handleDeleteTask(index)}>Delete</button>
                     <button className="move-up-button" onClick={() => moveTaskUp(index)}>👆</button>
                     <button className="move-down-button" onClick={() => moveTaskDown(index)}>👇</button>
